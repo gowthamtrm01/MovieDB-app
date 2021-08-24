@@ -36,14 +36,14 @@ class EditMovieForm extends React.Component {
     }
 
     deleteMovie = () => {
-        axios.delete(`/delete-movie/${this.state._id}`).then((res) => this.props.dispatch(removeMovie({ id: res.data._id })));
+        axios.delete(`https://movie-db-node.herokuapp.com/delete-movie/${this.state._id}`).then((res) => this.props.dispatch(removeMovie({ id: res.data._id })));
         this.props.history.push('/');
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         if (this.state.title !== "" && this.state.description !== "" && this.state.image !== "" && this.state.link !== "" && this.state.genre !== "" && this.state.rating !== "") {
-            axios.patch(`/edit-movie/${this.state._id}`, this.state).then((res) => this.props.dispatch(editMovie(res.data)));
+            axios.patch(`https://movie-db-node.herokuapp.com/edit-movie/${this.state._id}`, this.state).then((res) => this.props.dispatch(editMovie(res.data)));
             this.props.history.push('/');
         }
 

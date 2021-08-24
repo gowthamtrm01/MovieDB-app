@@ -34,7 +34,7 @@ class App extends React.Component {
 
     componentDidMount() {
         if (this.props.movieData.original.length === 0) {
-            axios.get('/get-all-data').then((res) => this.props.dispatch(addMovie(res.data)))
+            axios.get('https://movie-db-node.herokuapp.com/get-all-data').then((res) => this.props.dispatch(addMovie(res.data)))
         }
     }
 
@@ -189,7 +189,7 @@ class App extends React.Component {
                     }
                 }
             })
-            axios.post('add-movie', this.state.movie).then((res) => this.props.dispatch(addSingleMovie(res.data)));
+            axios.post('https://movie-db-node.herokuapp.com/add-movie', this.state.movie).then((res) => this.props.dispatch(addSingleMovie(res.data)));
             this.handleClose();
         }
     }
